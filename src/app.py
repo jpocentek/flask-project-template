@@ -14,6 +14,8 @@ STATIC_DIR = os.path.join(PROJECT_ROOT_PATH, "assets", "dist")
 SENTRY_DSN = os.environ.get("SENTRY_DSN", None)
 SENTRY_ENV = os.environ.get("SENTRY_ENV", "dev")
 
+toolbar = DebugToolbarExtension()
+
 
 def create_app(testing: bool = False) -> Flask:
     """Flask app factory."""
@@ -36,9 +38,10 @@ def create_app(testing: bool = False) -> Flask:
 
         sentry_sdk.init(dsn=SENTRY_DSN, environment=SENTRY_ENV)
 
-    DebugToolbarExtension(app)
+    app.register_blueprint(views)
+
     db.init_app(app)
     init_cli(app)
-    app.register_blueprint(views)
+    toolbar.init_app(app)
 
     return app
