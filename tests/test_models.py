@@ -1,6 +1,6 @@
 """Tests for DB models."""
 
-from app.models import User
+from models import User
 
 
 def test_user_repr_method() -> None:

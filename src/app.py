@@ -6,8 +6,8 @@ from typing import Tuple
 from flask import render_template, Flask
 from flask_debugtoolbar import DebugToolbarExtension  # type: ignore
 
-from .db import db
-from .management import init_cli
+from db import db
+from management import init_cli
 
 PROJECT_ROOT_PATH = os.environ["PROJECT_ROOT_PATH"]
 TEMPLATE_DIR = os.path.join(PROJECT_ROOT_PATH, "templates")
