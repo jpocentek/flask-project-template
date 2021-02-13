@@ -1,7 +1,7 @@
 """Application definition."""
 
 import os
-from typing import Any, Tuple
+from typing import Tuple
 
 from flask import render_template, Flask
 from flask_debugtoolbar import DebugToolbarExtension  # type: ignore
@@ -32,7 +32,7 @@ def create_app(testing: bool = False) -> Flask:
     DebugToolbarExtension(app)
 
     @app.route("/", methods=("GET",))
-    def index() -> Any:  # pylint: disable=W0612
+    def index() -> str:  # pylint: disable=W0612
         return render_template("index.html")
 
     @app.route("/ping", methods=("GET",))
