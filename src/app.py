@@ -11,6 +11,8 @@ from views import views
 PROJECT_ROOT_PATH = os.environ["PROJECT_ROOT_PATH"]
 TEMPLATE_DIR = os.path.join(PROJECT_ROOT_PATH, "templates")
 STATIC_DIR = os.path.join(PROJECT_ROOT_PATH, "assets", "dist")
+SENTRY_DSN = os.environ.get("SENTRY_DSN", None)
+SENTRY_ENV = os.environ.get("SENTRY_ENV", "dev")
 
 
 def create_app(testing: bool = False) -> Flask:
@@ -27,6 +29,11 @@ def create_app(testing: bool = False) -> Flask:
     if testing:
         app.testing = True
         app.debug = False
+
+    if SENTRY_DSN and not app.testing:
+        import sentry_sdk  # pylint: disable=C0415
+
+        sentry_sdk.init(dsn=SENTRY_DSN, environment=SENTRY_ENV)
 
     DebugToolbarExtension(app)
     db.init_app(app)
