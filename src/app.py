@@ -1,13 +1,12 @@
 """Application definition."""
 
 import os
-from typing import Tuple
-
-from flask import render_template, Flask
+from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension  # type: ignore
 
 from db import db
 from management import init_cli
+from views import views
 
 PROJECT_ROOT_PATH = os.environ["PROJECT_ROOT_PATH"]
 TEMPLATE_DIR = os.path.join(PROJECT_ROOT_PATH, "templates")
@@ -30,18 +29,8 @@ def create_app(testing: bool = False) -> Flask:
         app.debug = False
 
     DebugToolbarExtension(app)
-
-    @app.route("/", methods=("GET",))
-    def index() -> str:  # pylint: disable=W0612
-        return render_template("index.html")
-
-    @app.route("/ping", methods=("GET",))
-    def ping() -> Tuple[str, int]:  # pylint: disable=W0612
-        result = db.session.execute("SELECT version()")
-        result.fetchone()
-        return "", 200
-
     db.init_app(app)
     init_cli(app)
+    app.register_blueprint(views)
 
     return app
