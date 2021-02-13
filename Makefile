@@ -14,3 +14,4 @@ lint:
 test:
 	coverage run -m pytest -v -s
 	coverage report --fail-under=100 --show-missing
+	coverage html

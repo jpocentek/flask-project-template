@@ -1,5 +1,8 @@
 {
-    "ignorePatterns": ["assets/dist/*.js"],
+    "ignorePatterns": [
+        "assets/dist/*.js",
+        "htmlcov/*.js"
+    ],
     "env": {
         "browser": true,
         "es2021": true

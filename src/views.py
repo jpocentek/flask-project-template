@@ -17,6 +17,6 @@ def index() -> str:  # pylint: disable=W0612
 @views.route("/ping", methods=("GET",))
 def ping() -> Tuple[str, int]:  # pylint: disable=W0612
     """Health check"""
-    result = db.session.execute("SELECT version()")
+    result = db.session.execute("SELECT 1")
     result.fetchone()
     return "", 200

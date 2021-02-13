@@ -27,6 +27,7 @@ def create_app(testing: bool = False) -> Flask:
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     if testing:
+        app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///"
         app.testing = True
         app.debug = False
 
