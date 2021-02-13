@@ -1,4 +1,5 @@
 """DB models."""
+
 from .db import db
 
 

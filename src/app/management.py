@@ -1,4 +1,5 @@
 """CLI management commands."""
+
 import click
 from flask import Flask
 from flask.cli import with_appcontext
@@ -10,8 +11,7 @@ from .db import db
 @with_appcontext
 def init_db() -> None:
     """Initialize database."""
-    # Import models so SQLAlchemy can
-    # create tables for them.
+    # Import models so SQLAlchemy can create tables for them.
     from .models import User  # pylint: disable=C0415,W0611
 
     db.drop_all()

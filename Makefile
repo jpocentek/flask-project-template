@@ -1,9 +1,13 @@
-all: format lint test
+all: format lint build test
+
+build:
+	npm run build
 
 format:
 	black ./src ./tests
 
 lint:
+	npx eslint .
 	pylint --rcfile=setup.cfg ./src/* ./tests/*
 	mypy ./src ./tests
 

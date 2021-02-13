@@ -1,5 +1,6 @@
-mypy==0.800
-black==20.8b1
-pylint==2.6.0
-pytest==6.2.2
-coverage==5.4
+mypy>=0.800
+black>=20.8b1
+pylint>=2.6.0
+pytest>=6.2.2
+coverage>=5.4
+ipdb>=0.13.4

@@ -1,17 +1,16 @@
 *.*.swp
 *.pyc
 
+__pycache__/
+
 /.coverage
 /config.py
 
-__pycache__/
-
 /*.egg-info/
-
 /.mypy_cache/
 /.idea/
 /.pytest_cache/
-
+/assets/dist/
 /data/
 /htmlcov/
 /node_modules/

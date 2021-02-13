@@ -6,7 +6,7 @@ from app import create_app
 
 
 @pytest.fixture
-def app() -> Generator:
+def test_app() -> Generator:
     """Setup test app."""
     application = create_app(testing=True)
     yield application

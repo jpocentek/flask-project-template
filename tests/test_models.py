@@ -1,4 +1,5 @@
 """Tests for DB models."""
+
 from app.models import User
 
 

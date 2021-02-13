@@ -1,13 +1,12 @@
-# pylint: disable=C0115
 """Test for CLI management commands."""
 
-from typing import Any
+from pytest import MonkeyPatch
 from flask import Flask
 
 
-def test_init_db_command(app: Flask, monkeypatch: Any):
+def test_init_db_command(test_app: Flask, monkeypatch: MonkeyPatch):
     """Test init-db command."""
-    runner = app.test_cli_runner()
+    runner = test_app.test_cli_runner()
 
     class Recorder:
         drop_called: bool = False
